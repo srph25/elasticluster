@@ -18,7 +18,7 @@ __author__ = 'Nicolas Baer <nicolas.baer@uzh.ch>, Antonio Messina <antonio.s.mes
 
 # System imports
 import os
-import urllib
+from urllib.parse import splithost, splitport, splittype
 import threading
 import time
 from warnings import warn
@@ -81,9 +81,9 @@ class BotoCloudProvider(AbstractCloudProvider):
         self.timeout = timeout
 
         # read all parameters from url
-        proto, opaqueurl = urllib.splittype(ec2_url)
-        self._host, self._ec2path = urllib.splithost(opaqueurl)
-        self._ec2host, port = urllib.splitport(self._host)
+        proto, opaqueurl = splittype(ec2_url)
+        self._host, self._ec2path = splithost(opaqueurl)
+        self._ec2host, port = splitport(self._host)
 
         if port:
             port = int(port)

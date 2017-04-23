@@ -226,13 +226,8 @@ def _get_provider(name, provider_map):
       in `provider_map` does not exist in the module.
     """
     modname, clsname = provider_map[name]
-    print("    debug1")
-    print(modname, globals(), locals(), clsname)
-    #mod = __import__(modname, globals(), locals(), [clsname], -1)
     mod = import_module(modname)
-    print("    debug2")
     cls = getattr(mod, clsname)
-    print("    debug3")
     log.debug("Using class %r from module %r to instanciate provider '%s'",
               cls, mod, name)
     return cls
