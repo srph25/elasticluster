@@ -33,6 +33,7 @@ import socket
 import sys
 import time
 from multiprocessing.dummy import Pool
+from functools import reduce
 
 # External modules
 import paramiko
