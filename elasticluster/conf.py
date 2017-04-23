@@ -831,9 +831,11 @@ class Creator(object):
         """
         cloud_conf = self.cluster_conf[cluster_template]['cloud']
         provider = cloud_conf['provider']
-
+        print("  debug1")
         try:
+            print("  debug21")
             ctor = _get_provider(provider, CLOUD_PROVIDERS)
+            print("  debug22")
         except KeyError:
             # this should have been caught during config validation!
             raise ConfigurationError(
@@ -843,10 +845,12 @@ class Creator(object):
             raise RuntimeError(
                 "Unable to load cloud provider `{0}`: {1}: {2}"
                 .format(provider, err.__class__.__name__, err))
+        print("  debug3")
 
         provider_conf = cloud_conf.copy()
         provider_conf.pop('provider')
 
+        print("  debug4")
         return ctor(storage_path=self.storage_path, **provider_conf)
 
 
