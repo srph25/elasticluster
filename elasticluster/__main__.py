@@ -21,7 +21,7 @@ import logging
 import os
 import shutil
 import sys
-import .utils import redirect_warnings
+from .utils import redirect_warnings
 import warnings
 
 # External modules
