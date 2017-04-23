@@ -43,6 +43,7 @@ import re
 import sys
 from urllib.parse import urlparse
 from warnings import warn
+from importlib import import_module
 
 # 3rd-party modules
 from pkg_resources import resource_filename
@@ -226,7 +227,9 @@ def _get_provider(name, provider_map):
     """
     modname, clsname = provider_map[name]
     print("    debug1")
-    mod = __import__(modname, globals(), locals(), [clsname], -1)
+    print(modname, globals(), locals(), clsname)
+    #mod = __import__(modname, globals(), locals(), [clsname], -1)
+    mod = import_module(modname)
     print("    debug2")
     cls = getattr(mod, clsname)
     print("    debug3")
