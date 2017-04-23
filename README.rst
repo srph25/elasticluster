@@ -1,5 +1,5 @@
 ========================================================================
-    ElastiCluster |travis-ci-status| |gitter|
+    ElastiCluster Python 3 version |travis-ci-status| |gitter|
 ========================================================================
 
 .. This file follows reStructuredText markup syntax; see
@@ -10,6 +10,8 @@
 .. |gitter| image:: https://badges.gitter.im/elasticluster/chat.svg
    :alt: Join the chat at https://gitter.im/elasticluster/chat
    :target: https://gitter.im/elasticluster/chat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
+ElastiCluster_ Python 3 version
 
 ElastiCluster_ aims to provide a user-friendly command line tool to
 create, manage and setup computing clusters hosted on cloud
