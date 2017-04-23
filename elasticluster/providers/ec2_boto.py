@@ -476,6 +476,8 @@ class BotoCloudProvider(AbstractCloudProvider):
             cloud_keypair = keypairs[name]
 
             if pkey:
+                print(pkey.get_fingerprint())
+                print(pkey.get_fingerprint().__class__)
                 fingerprint = str.join(
                     ':', (i.encode('hex') for i in pkey.get_fingerprint()))
 
