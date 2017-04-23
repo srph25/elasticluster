@@ -475,7 +475,7 @@ class Cluster(Struct):
 
             # keep only nodes that were successfully started
             return set(node for node, ok
-                       in itertools.izip(nodes, result.get()) if ok)
+                       in zip(nodes, result.get()) if ok)
 
 
     @staticmethod
