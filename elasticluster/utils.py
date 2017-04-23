@@ -380,7 +380,7 @@ class Struct(DictMixin, object):
         return len(self.__dict__)
     
     def keys(self):
-        return self.__dict__.keys()
+        return list(self.__dict__.keys())
 
 
 @contextmanager
