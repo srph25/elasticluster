@@ -133,7 +133,8 @@ class ElastiCluster(cli.app.CommandLineApp):
         redirect_warnings(logger='gc3.elasticluster')
 
         # Set verbosity level
-        loglevel = max(logging.DEBUG, logging.WARNING - 10 * max(0, self.params.verbose))
+        #loglevel = max(logging.DEBUG, logging.WARNING - 10 * max(0, self.params.verbose))
+        loglevel = 1
         coloredlogs.install(logger=log, level=loglevel)
         log.setLevel(loglevel)
 
