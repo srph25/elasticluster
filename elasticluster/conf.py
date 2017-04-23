@@ -882,13 +882,14 @@ class Creator(object):
         extra.pop('setup')
         extra['template'] = template
 
+        print("debug1")
         if cloud is None:
             cloud = self.create_cloud_provider(template)
         if name is None:
             name = template
         if setup is None:
             setup = self.create_setup_provider(template, name=name)
-
+        print("debug2")
         cluster = Cluster(
             name=(name or template),
             cloud_provider=cloud,
@@ -898,6 +899,7 @@ class Creator(object):
             user_key_private=conf['login']["user_key_private"],
             repository=self.create_repository(),
             **extra)
+        print("debug3")
 
         nodes = conf['nodes']
         for group_name in nodes:
@@ -905,6 +907,7 @@ class Creator(object):
             for varname in ['image_user', 'image_userdata']:
                 group_conf.setdefault(varname, conf['login'][varname])
             cluster.add_nodes(group_name, **group_conf)
+        print("debug4")
         return cluster
 
 
