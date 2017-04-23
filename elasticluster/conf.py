@@ -36,7 +36,7 @@ from __future__ import (print_function, division, absolute_import)
 
 # stdlib imports
 from collections import defaultdict
-from configparser import SafeConfigParser
+from configparser import ConfigParser
 import os
 from os.path import expanduser, expandvars
 import re
@@ -358,7 +358,7 @@ def _read_config_files(paths):
     :param paths: list of filesystem paths of files to read
     """
     # read given config files
-    configparser = SafeConfigParser()
+    configparser = ConfigParser()
     configparser.read(paths)
 
     # temporarily modify environment to allow both `${...}` and `%(...)s`
