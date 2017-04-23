@@ -370,6 +370,15 @@ class Struct(DictMixin, object):
     def __getitem__(self, name):
         return self.__dict__[name]
 
+    def __delitem__(self, key):
+        del self.__dict__[key]
+    
+    def __iter__(self):
+        return iter(self.__dict__)
+    
+    def __len__(self):
+        return len(self.__dict__)
+    
     def keys(self):
         return self.__dict__.keys()
 
