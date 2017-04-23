@@ -206,6 +206,8 @@ class Cluster(Struct):
                 'repository',
         ):
             if key in keys:
+                print(key, keys)
+                print(key.__class__, keys.__class__)
                 keys.remove(key)
         return keys
 
@@ -1235,5 +1237,6 @@ instance flavor: %s""" % (self.name, self.preferred_ip, ips,
     def keys(self):
         """Only expose some of the attributes when using as a dictionary"""
         keys = Struct.keys(self)
+        print(keys.__class__)
         keys.remove('_cloud_provider')
         return keys
