@@ -59,8 +59,8 @@ use the *master* branch as starting point.
 Quickstart
 ==========
 
-ElastiCluster_ is a Python_ program; Python version 2.6 or 2.7 is
-required to run it.  Python 3 is not (yet) supported.
+ElastiCluster_ is a Python_ program; Python version 3 is
+required to run it.  Python 2 is not supported.
 
 It's quite easy to install ElastiCluster using pip_; the command
 below is all you need to install ElastiCluster on your system::
