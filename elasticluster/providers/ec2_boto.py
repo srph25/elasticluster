@@ -477,7 +477,7 @@ class BotoCloudProvider(AbstractCloudProvider):
 
             if pkey:
                 fingerprint = str.join(
-                    ':', (i.encode('hex') for i in str(pkey.get_fingerprint(),'utf-8')))
+                    ':', (i.encode('hex') for i in str(pkey.get_fingerprint(),'latin-1')))
 
                 if fingerprint != cloud_keypair.fingerprint:
                     if "amazon" in self._ec2host:
