@@ -206,7 +206,9 @@ class Cluster(Struct):
                 'repository',
         ):
             if key in keys:
+                print("debug1")
                 keys.remove(key)
+                print("debug12")
         return keys
 
     def update_config(self, cluster_config, login_config):
@@ -560,7 +562,9 @@ class Cluster(Struct):
                                 for keytype, keydata in key.items():
                                     keys.add(host, keytype, keydata)
                             self._save_keys_to_known_hosts_file(keys)
+                            print("debug2")
                             nodes.remove(node)
+                            print("debug22")
                     if nodes:
                         time.sleep(self.polling_interval)
 
@@ -632,7 +636,9 @@ class Cluster(Struct):
                     missing = missing - 1
 
                     if missing == 0:
+                        print("debug3")
                         unsatisfied_groups.remove(ugroup)
+                        print("debug32")
 
         if unsatisfied_groups:
             raise ClusterError("Could not find an optimal solution to "
@@ -711,14 +717,18 @@ class Cluster(Struct):
                     "Node `%s` has no instance ID."
                     " Assuming it did not start correctly,"
                     " so removing it anyway from the cluster.", node.name)
+                print("debug4")
                 self.nodes[node.kind].remove(node)
+                print("debug42")
                 continue
             # try and stop node
             try:
                 # wait and pause for and recheck.
                 node.stop(wait)
 
+                print("debug5")
                 self.nodes[node.kind].remove(node)
+                print("debug52")
                 log.debug(
                     "Removed node `%s` from cluster `%s`", node.name, self.name)
             except InstanceNotFoundError as err:
@@ -972,7 +982,9 @@ class NodeNamingPolicy(object):
             params = self._parse(name)
             index = int(params['index'], 10)
             if index in self._free[kind]:
+                print("debug6")
                 self._free[kind].remove(index)
+                print("debug62")
             top = self._top[kind]
             if index > top:
                 self._free[kind].update(range(top+1, index))
@@ -1164,7 +1176,9 @@ class Node(Struct):
         # This is done in order to "sort" the IPs and put the preferred_ip first.
         if self.preferred_ip:
             if self.preferred_ip in ips:
+                print("debug7")
                 ips.remove(self.preferred_ip)
+                print("debug72")
             else:
                 # Preferred is changed?
                 log.debug("IP %s does not seem to belong to %s anymore. Ignoring!", self.preferred_ip, self.name)
@@ -1235,5 +1249,7 @@ instance flavor: %s""" % (self.name, self.preferred_ip, ips,
     def keys(self):
         """Only expose some of the attributes when using as a dictionary"""
         keys = Struct.keys(self)
+        print("debug8")
         keys.remove('_cloud_provider')
+        print("debug82")
         return keys
