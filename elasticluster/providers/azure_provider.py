@@ -24,7 +24,7 @@ import azure.servicemanagement
 from azure.servicemanagement._http import HTTPRequest
 from azure.servicemanagement._http.httpclient import _HTTPClient
 from azure.servicemanagement._common_serialization import _get_request_body
-from urllib2 import quote as url_quote
+from urllib.request import quote as url_quote
 
 # Elasticluster imports
 from elasticluster import log
@@ -504,7 +504,7 @@ class AzureSubscription(object):
             disks = self._sms.list_disks()
             for disk in disks:
                 for cloud_service in self._cloud_services:
-                    for vm_name, v_m in cloud_service._instances.iteritems():
+                    for vm_name, v_m in cloud_service._instances.items():
                         if v_m._os_vhd_name:
                             continue
                         if vm_name in disk.name and \

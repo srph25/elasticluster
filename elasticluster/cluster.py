@@ -583,7 +583,7 @@ class Cluster(Struct):
         if min_nodes is None:
             min_nodes = {}
         # check that each group has a minimum value
-        for group, nodes in self.nodes.iteritems():
+        for group, nodes in self.nodes.items():
             if group not in min_nodes:
                 min_nodes[group] = len(nodes)
         return min_nodes
@@ -601,7 +601,7 @@ class Cluster(Struct):
         """
         # check the total sizes before moving the nodes around
         minimum_nodes = 0
-        for group, size in min_nodes.iteritems():
+        for group, size in min_nodes.items():
             minimum_nodes = minimum_nodes + size
 
         if len(self.get_all_nodes()) < minimum_nodes:
@@ -615,14 +615,14 @@ class Cluster(Struct):
 
         # finding all node groups with an unsatisfied amount of nodes
         unsatisfied_groups = []
-        for group, size in min_nodes.iteritems():
+        for group, size in min_nodes.items():
             if len(self.nodes[group]) < size:
                 unsatisfied_groups.append(group)
 
         # trying to move nodes around to fill the groups with missing nodes
         for ugroup in unsatisfied_groups[:]:
             missing = min_nodes[ugroup] - len(self.nodes[ugroup])
-            for group, nodes in self.nodes.iteritems():
+            for group, nodes in self.nodes.items():
                 spare = len(self.nodes[group]) - min_nodes[group]
                 while spare > 0 and missing > 0:
                     self.nodes[ugroup].append(self.nodes[group][-1])

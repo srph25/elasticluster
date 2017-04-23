@@ -174,7 +174,7 @@ class Start(AbstractCommand):
 
         # overwrite configuration
         cluster_conf = creator.cluster_conf[cluster_template]
-        for option, value in self.params.extra_conf.iteritems():
+        for option, value in self.params.extra_conf.items():
             if option in cluster_conf:
                 cluster_conf[option] = value
 
@@ -195,7 +195,7 @@ class Start(AbstractCommand):
                 print("* {0:d} {1} nodes.".format(len(cluster.nodes[cls]), cls))
             print("(This may take a while...)")
             min_nodes = dict(
-                (k[:-len('_nodes_min')], int(v)) for k, v in cluster_conf.iteritems() if
+                (k[:-len('_nodes_min')], int(v)) for k, v in cluster_conf.items() if
                 k.endswith('_nodes_min'))
             cluster.start(min_nodes=min_nodes)
             if self.params.no_setup:
@@ -336,9 +336,9 @@ class ResizeCluster(AbstractCommand):
             #       complicated for the user
             if (not grp in cluster.nodes or not cluster.nodes[grp]) \
                     and not template:
-                print "Elasticluster can not infer which template to use for "\
+                print("Elasticluster can not infer which template to use for "\
                       "the new node(s). Please provide the template with " \
-                      "the `-t` or `--template` option"
+                      "the `-t` or `--template` option")
                 return
 
             if not template:

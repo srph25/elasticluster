@@ -21,7 +21,7 @@ import logging
 import os
 import shutil
 import sys
-import utils
+import .utils import redirect_warnings
 import warnings
 
 # External modules
@@ -130,7 +130,7 @@ class ElastiCluster(cli.app.CommandLineApp):
         # print *all* Python warnings through the logging subsystem
         warnings.resetwarnings()
         warnings.simplefilter('once')
-        utils.redirect_warnings(logger='gc3.elasticluster')
+        redirect_warnings(logger='gc3.elasticluster')
 
         # Set verbosity level
         loglevel = max(logging.DEBUG, logging.WARNING - 10 * max(0, self.params.verbose))

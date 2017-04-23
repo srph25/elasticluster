@@ -292,7 +292,7 @@ class BotoCloudProvider(AbstractCloudProvider):
         """
         self._load_instance(instance_id)
         instance = self._load_instance(instance_id)
-        IPs = [ip for ip in instance.private_ip_address, instance.ip_address if ip]
+        IPs = [ip for ip in instance.private_ip_address] + [ip for ip in instance.ip_address]
 
         # We also need to check if there is any floating IP associated
         if self.request_floating_ip and not self._vpc:

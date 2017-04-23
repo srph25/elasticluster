@@ -149,7 +149,7 @@ class GoogleCloudProvider(AbstractCloudProvider):
                     credentials = run_flow(flow, storage, flags=args)
                 except:
                     import sys
-                    print "Unexpected error:", sys.exc_info()[0]
+                    print("Unexpected error:", sys.exc_info()[0])
                     raise
 
             http = httplib2.Http()

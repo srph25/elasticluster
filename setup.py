@@ -106,7 +106,7 @@ if python_version == (2, 6):
         'python-keystoneclient<2.0.0',
         'python-novaclient<3.0.0',
     ]
-elif python_version == (2, 7):
+elif python_version == (2, 7) or python_version[0] == 3:
     version_dependent_requires = [
         'python-novaclient',
     ]
