@@ -22,6 +22,7 @@ from urllib.parse import splithost, splitport, splittype
 import threading
 import time
 from warnings import warn
+import codecs
 
 # External modules
 import boto
@@ -477,7 +478,7 @@ class BotoCloudProvider(AbstractCloudProvider):
 
             if pkey:
                 fingerprint = str.join(
-                    ':', (i.encode('hex') for i in str(pkey.get_fingerprint(),'latin-1')))
+                    ':', (codecs.encode(i, 'hex') for i in str(pkey.get_fingerprint(),'latin-1')))
 
                 if fingerprint != cloud_keypair.fingerprint:
                     if "amazon" in self._ec2host:
