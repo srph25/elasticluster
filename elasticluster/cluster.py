@@ -1236,7 +1236,7 @@ instance flavor: %s""" % (self.name, self.preferred_ip, ips,
 
     def keys(self):
         """Only expose some of the attributes when using as a dictionary"""
-        keys = Struct.keys(self)
+        keys = list(Struct.keys(self))
         print(keys.__class__)
         keys.remove('_cloud_provider')
         return keys
