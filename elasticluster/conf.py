@@ -885,11 +885,12 @@ class Creator(object):
         print("debug1")
         if cloud is None:
             cloud = self.create_cloud_provider(template)
+        print("debug21")
         if name is None:
             name = template
         if setup is None:
             setup = self.create_setup_provider(template, name=name)
-        print("debug2")
+        print("debug22")
         cluster = Cluster(
             name=(name or template),
             cloud_provider=cloud,
